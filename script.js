@@ -21,17 +21,20 @@ let sillyStory =
 randomize.addEventListener("click", result);
 
 function result() {
+  let newStory = sillyStory;
+
   let nameItem = randomValueFromArray(characterName);
   let locationItem = randomValueFromArray(storyLocation);
   let plotItem = randomValueFromArray(storyPlot);
 
-  let newStory = sillyStory
-    .replaceAll(":insertx:", nameItem)
-    .replaceAll(":inserty:", locationItem)
-    .replaceAll(":insertz:", plotItem);
+  newStory = newStory.replaceAll(":insertx:", nameItem);
+  newStory = newStory.replaceAll(":inserty:", locationItem);
+  newStory = newStory.replaceAll(":insertz:", plotItem);
 
   if (customName.value !== "") {
     const name = customName.value;
+    newStory = newStory.replaceAll("Bob", name);
+    console.log(name);
   }
 
   if (document.getElementById("uk").checked) {
